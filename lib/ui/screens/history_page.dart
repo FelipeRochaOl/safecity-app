@@ -12,11 +12,11 @@ class HistoryPage extends StatelessWidget {
           // Placeholder for history items
           Expanded(
             child: ListView.builder(
-              itemCount: 10, // Example count
+              itemCount: 1, // Example count
               itemBuilder: (context, index) {
                 return ListTile(
-                  title: Text('Histórico Item ${index + 1}'),
-                  subtitle: Text('Detalhes do item ${index + 1}'),
+                  title: Text('Assalto - 08/08/2025 20:58'),
+                  subtitle: Text('Assalto avenida paulista, com 2 mortos!'),
                   leading: Icon(Icons.history),
                   trailing: Icon(Icons.arrow_forward),
                   style: ListTileStyle.drawer,

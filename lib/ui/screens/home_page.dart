@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:safecity/ui/components/background_page.dart';
+import 'package:safecity/ui/components/drawer_header_profile.dart';
 import 'package:safecity/ui/components/nav_bar.dart';
 import 'package:safecity/ui/screens/login_page.dart';
 import 'package:safecity/ui/screens/notification_page.dart';
@@ -16,19 +17,10 @@ class HomePage extends StatelessWidget {
         backgroundColor: AppColors.backgroundColor,
         child: Column(
           children: [
-            DrawerHeader(
-              decoration: BoxDecoration(color: AppColors.backgroundPurpleColor),
-              child: Align(
-                alignment: Alignment.bottomLeft,
-                child: Text(
-                  'Menu',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
+            DrawerHeaderProfile(
+              nome: "Felipe Rocha",
+              email: "felipe@email.com",
+              fotoUrl: "https://i.pravatar.cc/150?img=3",
             ),
             ListTile(
               leading: Icon(Icons.logout),
@@ -66,10 +58,7 @@ class HomePage extends StatelessWidget {
       ),
       body: Stack(
         alignment: Alignment.center,
-        children: [
-          BackgroundPage(),
-          NavigationBarApp(),
-        ],
+        children: [BackgroundPage(), NavigationBarApp()],
       ),
     );
   }

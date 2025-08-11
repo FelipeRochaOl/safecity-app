@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:safecity/ui/components/card_report.dart';
+import 'package:safecity/ui/components/map_screen.dart';
+import 'package:safecity/ui/components/report_list.dart';
 
 class TabBarHome extends StatelessWidget {
   const TabBarHome({super.key});
@@ -23,18 +24,8 @@ class TabBarHome extends StatelessWidget {
               Expanded(
                 child: TabBarView(
                   children: [
-                    Icon(Icons.directions_car),
-                    ListView.builder(
-                      itemCount: 20,
-                      itemBuilder: (context, index) {
-                        return AppCardReport(
-                          key: Key('report_$index'),
-                          dateTime: '01/01/2023 12:00',
-                          title: 'Incidente $index',
-                          description: 'Descrição do incidente relatado.',
-                        );
-                      },
-                    )
+                    MapScreen(),
+                    IncidentListScreen(),
                   ],
                 ),
               ),

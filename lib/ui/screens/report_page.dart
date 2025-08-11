@@ -8,6 +8,7 @@ import 'package:safecity/ui/components/media_input.dart';
 import 'package:safecity/ui/components/switch_input.dart';
 import 'package:safecity/ui/components/text_area_input.dart';
 import 'package:safecity/ui/components/time_input.dart';
+import 'package:safecity/ui/screens/home_page.dart';
 import 'package:safecity/ui/styles/fonts.dart';
 import 'package:safecity/ui/styles/spaces.dart';
 
@@ -56,6 +57,7 @@ class ReportPage extends StatelessWidget {
                     AppDateInput(
                       label: 'Data',
                       initialDate: DateTime.now(),
+                      initialText: '${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}',
                       onDateSelected: (date) => print("Data selecionada: $date"),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
@@ -68,6 +70,7 @@ class ReportPage extends StatelessWidget {
                     AppTimeInput(
                       label: 'Horário',
                       initialTime: TimeOfDay.now(),
+                      initialText: '${TimeOfDay.now().hour}:${TimeOfDay.now().minute}',
                       onTimeSelected: (time) => print("Horário selecionado: $time"),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
@@ -126,7 +129,11 @@ class ReportPage extends StatelessWidget {
                           message: 'Incidente registrado com sucesso.',
                           isSuccess: true,
                           onConfirmed: () {
-                            // ação após o botão OK
+                            Navigator.pop(context); // Fecha o modal de sucesso
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => const HomePage()),
+                            );
                           },
                         );
                       },

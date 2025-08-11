@@ -45,11 +45,7 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
-	<key>NSCameraUsageDescription</key>
-	<string>Precisamos acessar a câmera</string>
-	<key>NSMicrophoneUsageDescription</key>
-	<string>Precisamos do microfone para vídeos</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Precisamos da galeria para enviar fotos</string>
+	<key>GMSApiKey</key>
+	<string>AIzaSyAKTKlCiySOc6QRL53NW8k75AvfgIdmMIA</string>
 </dict>
 </plist>

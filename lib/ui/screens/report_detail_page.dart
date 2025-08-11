@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:safecity/ui/components/background_page.dart';
 import 'package:safecity/ui/components/html_viewer.dart';
-import 'package:safecity/ui/components/segment_like_dislike.dart';
 import 'package:safecity/ui/components/timer_text.dart';
 import 'package:safecity/ui/styles/spaces.dart';
 

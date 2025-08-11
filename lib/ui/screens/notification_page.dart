@@ -13,12 +13,8 @@ class NotificationPage extends StatelessWidget {
         child: Column(
           children: <Widget>[
             AppCardNotification(
-              title: 'Notification 1',
-              subtitle: 'This is a notification',
-            ),
-            AppCardNotification(
-              title: 'Notification 2',
-              subtitle: 'This is another notification',
+              title: 'Assalto',
+              subtitle: 'Assalto avenida paulista, com 2 mortos!',
             ),
           ],
         ),

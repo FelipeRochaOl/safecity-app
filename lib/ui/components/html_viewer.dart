@@ -47,7 +47,7 @@ class AppHtmlViewer extends StatelessWidget {
             textDecoration: TextDecoration.underline,
           ),
           "code": Style(
-            backgroundColor: theme.colorScheme.surfaceVariant.withOpacity(0.3),
+            backgroundColor: theme.colorScheme.surfaceContainerHighest.withOpacity(0.3),
             padding: HtmlPaddings.all(6),
             border: Border.all(color: theme.dividerColor, width: 1, style: BorderStyle.solid),
             fontFamily: "monospace",
@@ -61,7 +61,7 @@ class AppHtmlViewer extends StatelessWidget {
             border: Border.all(color: theme.dividerColor),
           ),
           "th": Style(
-            backgroundColor: theme.colorScheme.surfaceVariant,
+            backgroundColor: theme.colorScheme.surfaceContainerHighest,
             padding: HtmlPaddings.all(8),
           ),
           "td": Style(

@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:safecity/ui/styles/colors.dart';
@@ -24,12 +23,19 @@ class AppMediaInput extends StatefulWidget {
 class _AppMediaInputState extends State<AppMediaInput> {
   XFile? _selectedFile;
   VideoPlayerController? _videoController;
+  bool _isInitializing =
+      false; // Variável para indicar se o vídeo está sendo inicializado
 
   Future<void> _pickMedia() async {
     final picker = ImagePicker();
-    final XFile? file = widget.isVideo
-        ? await picker.pickVideo(source: ImageSource.camera)
-        : await picker.pickImage(source: ImageSource.camera);
+    XFile? file;
+
+    // Escolha se é vídeo ou imagem
+    if (widget.isVideo) {
+      file = await picker.pickVideo(source: ImageSource.camera);
+    } else {
+      file = await picker.pickImage(source: ImageSource.camera);
+    }
 
     if (file != null) {
       setState(() {
@@ -37,10 +43,20 @@ class _AppMediaInputState extends State<AppMediaInput> {
       });
 
       if (widget.isVideo) {
+        _isInitializing = true; // Indica que a inicialização do vídeo começou
         _videoController = VideoPlayerController.file(File(file.path));
-        await _videoController!.initialize();
-        _videoController!.setLooping(true);
-        _videoController!.play();
+
+        try {
+          await _videoController!.initialize();
+          _videoController!.setLooping(true);
+          _videoController!.play();
+        } catch (e) {
+          print("Erro ao inicializar o vídeo: $e");
+        }
+
+        setState(() {
+          _isInitializing = false; // Vídeo foi inicializado
+        });
       }
 
       widget.onMediaSelected(file);
@@ -49,7 +65,7 @@ class _AppMediaInputState extends State<AppMediaInput> {
 
   @override
   void dispose() {
-    _videoController?.dispose();
+    _videoController?.dispose(); // Libera recursos ao destruir o controlador
     super.dispose();
   }
 
@@ -68,20 +84,25 @@ class _AppMediaInputState extends State<AppMediaInput> {
               borderRadius: BorderRadius.circular(8.0),
             ),
             backgroundColor: AppColors.backgroundColor,
-            padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 16.0),
+            padding: const EdgeInsets.symmetric(
+              vertical: 12.0,
+              horizontal: 16.0,
+            ),
             minimumSize: Size(double.infinity, 50.0),
           ),
         ),
         const SizedBox(height: 10),
         if (_selectedFile != null)
           widget.isVideo
-              ? _videoController != null &&
-                        _videoController!.value.isInitialized
+              ? _isInitializing
+                    ? const CircularProgressIndicator() // Exibe o carregando enquanto o vídeo é inicializado
+                    : _videoController != null &&
+                          _videoController!.value.isInitialized
                     ? AspectRatio(
                         aspectRatio: _videoController!.value.aspectRatio,
                         child: VideoPlayer(_videoController!),
                       )
-                    : const CircularProgressIndicator()
+                    : const Text('Erro ao carregar o vídeo.')
               : Image.file(
                   File(_selectedFile!.path),
                   width: double.infinity,
