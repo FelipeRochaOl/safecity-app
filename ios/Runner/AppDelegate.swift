@@ -11,8 +11,9 @@ import GoogleMaps
     _ application: UIApplication,
     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
   ) -> Bool {
+    let apiKey = Bundle.main.object(forInfoDictionaryKey: "GMSApiKey") as? String
+    GMSServices.provideAPIKey(apiKey ?? "")
     GeneratedPluginRegistrant.register(with: self)
-    GMSServices.provideAPIKey("AIzaSyCkLD0T2WDYmEWenliUGZhI2VEp0h62j8A")
     // FirebaseApp.configure()
     return super.application(application, didFinishLaunchingWithOptions: launchOptions)
   }

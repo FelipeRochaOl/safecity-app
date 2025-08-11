@@ -1,3 +1,15 @@
+import java.util.Properties
+
+// Carrega local.properties da pasta android/
+val localProps = Properties().apply {
+    val file = rootProject.file("local.properties")
+    if (file.exists()) {
+        file.inputStream().use { load(it) }
+    }
+}
+
+val mapsKey = localProps.getProperty("GOOGLE_MAPS_API_ANDROID_KEY") ?: ""
+
 plugins {
     id("com.android.application")
     // START: FlutterFire Configuration
@@ -31,6 +43,7 @@ android {
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
+        manifestPlaceholders["GOOGLE_MAPS_API_ANDROID_KEY"] = mapsKey
     }
 
     buildTypes {
@@ -39,6 +52,10 @@ android {
             // Signing with the debug keys for now, so `flutter run --release` works.
             signingConfig = signingConfigs.getByName("debug")
         }
+    }
+
+    buildFeatures {
+        buildConfig = true
     }
 }
 

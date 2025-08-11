@@ -2,6 +2,8 @@ PODS:
   - app_settings (4.3.0):
     - Flutter
   - Flutter (1.0.0)
+  - flutter_config (0.0.1):
+    - Flutter
   - flutter_localization (0.0.1):
     - Flutter
   - Google-Maps-iOS-Utils (5.0.0):
@@ -19,6 +21,7 @@ PODS:
 DEPENDENCIES:
   - app_settings (from `.symlinks/plugins/app_settings/ios`)
   - Flutter (from `Flutter`)
+  - flutter_config (from `.symlinks/plugins/flutter_config/ios`)
   - flutter_localization (from `.symlinks/plugins/flutter_localization/ios`)
   - google_maps_flutter_ios (from `.symlinks/plugins/google_maps_flutter_ios/ios`)
 
@@ -32,6 +35,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/app_settings/ios"
   Flutter:
     :path: Flutter
+  flutter_config:
+    :path: ".symlinks/plugins/flutter_config/ios"
   flutter_localization:
     :path: ".symlinks/plugins/flutter_localization/ios"
   google_maps_flutter_ios:
@@ -40,6 +45,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   app_settings: e278924e9588c9105a7aa8482c9ecc41d884684b
   Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
+  flutter_config: a0cd4b5996f2a1683657d14777c8fa57e04a40ea
   flutter_localization: 72299fb6cb4e51cae587bd953ed0b958040b71e6
   Google-Maps-iOS-Utils: 66d6de12be1ce6d3742a54661e7a79cb317a9321
   google_maps_flutter_ios: 0291eb2aa252298a769b04d075e4a9d747ff7264
