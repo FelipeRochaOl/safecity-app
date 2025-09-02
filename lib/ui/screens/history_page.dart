@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:safecity/ui/screens/report_detail_page.dart';
 
 class HistoryPage extends StatelessWidget {
   const HistoryPage({super.key});
@@ -12,7 +13,7 @@ class HistoryPage extends StatelessWidget {
           // Placeholder for history items
           Expanded(
             child: ListView.builder(
-              itemCount: 1, // Example count
+              itemCount: 1, // Example count,
               itemBuilder: (context, index) {
                 return ListTile(
                   title: Text('Assalto - 08/08/2025 20:58'),
@@ -20,12 +21,20 @@ class HistoryPage extends StatelessWidget {
                   leading: Icon(Icons.history),
                   trailing: Icon(Icons.arrow_forward),
                   style: ListTileStyle.drawer,
+                  onTap: () => _handleNavigationReportDetails(context),
                 );
               },
             ),
           ),
         ],
       ),
+    );
+  }
+
+  _handleNavigationReportDetails(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const ReportDetailPage()),
     );
   }
 }

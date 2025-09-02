@@ -3,7 +3,7 @@ import 'package:safecity/ui/styles/colors.dart';
 import 'package:safecity/ui/styles/fonts.dart';
 
 class AppElevatedButton extends StatelessWidget {
-  final Function onPressed;
+  final VoidCallback? onPressed;
   final String text;
   final IconData? icon;
   final bool beforeIcon;
@@ -27,7 +27,7 @@ class AppElevatedButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: () => onPressed(),
+      onPressed: () => onPressed!(),
       style: ButtonStyle(
         backgroundColor: WidgetStatePropertyAll(backgroundColor),
       ),
